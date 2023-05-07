@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+
+body {
+  width: 100vw;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#store3 ul {
+  display: none;
+}
+#store3:hover ul {
+  display: block;
+  position: absolute;
+  left: 5rem;
+  top: 0;
+  background-color: rgb(219 234 254 / 1);
+}
+
+
+@tailwind utilities;
