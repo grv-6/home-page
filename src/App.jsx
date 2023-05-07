@@ -1,3 +1,4 @@
+import Body from './component/Body'
 import Navbar from './component/Navbar'
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Body />
     </>
   )
 }
