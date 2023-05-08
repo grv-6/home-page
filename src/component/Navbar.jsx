@@ -1,8 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Navbar = () => {
+  let storeRef = useRef();
   const [store, setstore] = useState(false);
-  const showStore = () => {};
+  //   const showStore = () => {};
+
+  useEffect(() => {
+   let handler = (e) => {
+
+       console.log(storeRef.current);
+      if (!storeRef.current.contains(e.target)) {
+        setstore(false);
+      }
+    };
+    document.body.addEventListener("mousedown", handler);
+  return ()=> {
+    document.removeEventListener("mousedown", handler)
+  }
+
+});
   return (
     <div className="w-full px-16 flex justify-between bg-blue-200 py-4">
       <div className="font-semibold text-blue-900 text-2xl">Logo</div>
@@ -12,10 +28,11 @@ const Navbar = () => {
           <li
             onClick={() => setstore(!store)}
             className="relative px-4 cursor-pointer"
+            ref={storeRef}
           >
             <div className="flex items-center gap-1">
               <span>Store</span>
-              <div className={store?'rotate-180':''}>
+              <div className={store ? "rotate-180" : ""}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -45,12 +62,21 @@ const Navbar = () => {
               <li className="border-b border-gray-600 px-4 py-2 w-fit flex hover:bg-blue-300">
                 store2
               </li>
-              <li className="border-b border-gray-600 px-4 py-2 w-fit flex relative hover:bg-blue-300" id="store3">
+              <li
+                className="border-b border-gray-600 px-4 py-2 w-fit flex relative hover:bg-blue-300"
+                id="store3"
+              >
                 store3
                 <ul className="">
-                    <li className="border-b border-gray-600 py-2 px-3 hover:bg-blue-300">Substore1</li>
-                    <li className="border-b border-gray-600 py-2 px-3 hover:bg-blue-300">Substore2</li>
-                    <li className="border-b border-gray-600 py-2 px-3 hover:bg-blue-300">Substore3</li>
+                  <li className="border-b border-gray-600 py-2 px-3 hover:bg-blue-300">
+                    Substore1
+                  </li>
+                  <li className="border-b border-gray-600 py-2 px-3 hover:bg-blue-300">
+                    Substore2
+                  </li>
+                  <li className="border-b border-gray-600 py-2 px-3 hover:bg-blue-300">
+                    Substore3
+                  </li>
                 </ul>
               </li>
             </ul>
