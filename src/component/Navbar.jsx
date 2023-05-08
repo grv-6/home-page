@@ -6,19 +6,17 @@ const Navbar = () => {
   //   const showStore = () => {};
 
   useEffect(() => {
-   let handler = (e) => {
-
-       console.log(storeRef.current);
+    let handler = (e) => {
+      console.log(storeRef.current);
       if (!storeRef.current.contains(e.target)) {
         setstore(false);
       }
     };
     document.body.addEventListener("mousedown", handler);
-  return ()=> {
-    document.removeEventListener("mousedown", handler)
-  }
-
-});
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
   return (
     <div className="w-full px-16 flex justify-between bg-blue-200 py-4">
       <div className="font-semibold text-blue-900 text-2xl">Logo</div>
@@ -66,7 +64,26 @@ const Navbar = () => {
                 className="border-b border-gray-600 px-4 py-2 w-fit flex relative hover:bg-blue-300"
                 id="store3"
               >
-                store3
+                <div className="flex items-center gap-1">
+                  <span>Store3</span>
+                  <div >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1}
+                      stroke="currentColor"
+                      className="w-3 h-3"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
                 <ul className="">
                   <li className="border-b border-gray-600 py-2 px-3 hover:bg-blue-300">
                     Substore1
